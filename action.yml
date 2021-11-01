@@ -1,0 +1,11 @@
+name: z-os toolchain
+description: Use the z-os toolchain
+inputs:
+  script:
+    description: Script to run
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.script }}
