@@ -6,6 +6,6 @@ inputs:
     required: true
 runs:
   using: docker
-  image: Dockerfile
+  image: imzacm/z-os-toolchain:v0.1.2
   args:
     - ${{ inputs.script }}

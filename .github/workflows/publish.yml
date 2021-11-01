@@ -21,4 +21,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: imzacm/z-os-toolchain/${{ env.TAG_NAME }}
+          tags: imzacm/z-os-toolchain:${{ env.TAG_NAME }}
