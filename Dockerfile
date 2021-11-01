@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     libmpc-dev libmpfr-dev texinfo libisl-dev
 COPY ./setup-toolchain.sh /tmp/setup-toolchain.sh
 RUN chmod +x /tmp/setup-toolchain.sh && bash /tmp/setup-toolchain.sh
+ENV PREFIX="/usr/src/app/toolchain/prefix"
 
 FROM base AS action
 COPY action-entrypoint.sh /usr/src/app/action-entrypoint.sh
