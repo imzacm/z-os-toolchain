@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 COPY ./setup-toolchain.sh /tmp/setup-toolchain.sh
 RUN chmod +x /tmp/setup-toolchain.sh && bash /tmp/setup-toolchain.sh
 ENV PREFIX="/usr/src/app/toolchain/prefix" \
-    PATH="/usr/src/app/toolchain/prefix/bin:/usr/src/app/toolchain/prefix/cargo/bin"
+    PATH="/usr/src/app/toolchain/prefix/bin:/usr/src/app/toolchain/prefix/cargo/bin:${PATH}"
 
 FROM base AS action
 COPY action-entrypoint.sh /usr/src/app/action-entrypoint.sh
