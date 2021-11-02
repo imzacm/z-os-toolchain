@@ -1,0 +1,24 @@
+NASM_VERSION := 2.15.05
+NASM_ARCHIVE_NAME := nasm-$(NASM_VERSION).tar.xz
+NASM_DIR_NAME := nasm-$(NASM_VERSION)
+NASM_SRC_URL := https://www.nasm.us/pub/nasm/releasebuilds/$(NASM_VERSION)/$(NASM_ARCHIVE_NAME)
+
+BINUTILS_VERSION := 2.37
+BINUTILS_ARCHIVE_NAME := binutils-$(BINUTILS_VERSION).tar.xz
+BINUTILS_DIR_NAME := binutils-$(BINUTILS_VERSION)
+BINUTILS_SRC_URL := https://ftp.gnu.org/gnu/binutils/$(BINUTILS_ARCHIVE_NAME)
+
+GCC_VERSION := 11.2.0
+GCC_ARCHIVE_NAME := gcc-$(GCC_VERSION).tar.xz
+GCC_DIR_NAME := gcc-$(GCC_VERSION)
+GCC_SRC_URL := https://ftp.gnu.org/gnu/gcc/gcc-$(GCC_VERSION)/$(GCC_ARCHIVE_NAME)
+
+XORRISO_VERSION := 1.5.4
+XORRISO_ARCHIVE_NAME := xorriso-$(XORRISO_VERSION).pl02.tar.gz
+XORRISO_DIR_NAME := xorriso-$(XORRISO_VERSION)
+XORRISO_SRC_URL := https://www.gnu.org/software/xorriso/$(XORRISO_ARCHIVE_NAME)
+
+GRUB_VERSION := 2.06
+GRUB_ARCHIVE_NAME := grub-$(GRUB_VERSION).tar.xz
+GRUB_DIR_NAME := grub-$(GRUB_VERSION)
+GRUB_SRC_URL := https://ftp.gnu.org/gnu/grub/$(GRUB_ARCHIVE_NAME)
