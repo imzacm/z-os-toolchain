@@ -1,9 +1,9 @@
 include ./config.mk
 include ./sources.mk
 
-.PHONY: all clean nasm clean-nasm binutils clean-binutils gcc clean-gcc xorriso clean-xorriso grub clean-grub
+.PHONY: all clean cargo nasm clean-nasm binutils clean-binutils gcc clean-gcc xorriso clean-xorriso grub clean-grub
 
-all: nasm binutils gcc xorriso grub
+all: cargo nasm binutils gcc xorriso grub
 
 clean:
 	@rm -rf $(SRC_DIR) $(BUILD_DIR)
@@ -22,6 +22,10 @@ clean-xorriso:
 
 clean-grub:
 	@rm -rf $(SRC_DIR)/$(GRUB_DIR_NAME) $(BUILD_DIR)/$(GRUB_DIR_NAME)
+
+cargo:
+	@curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+	@rustup update
 
 nasm: $(PREFIX)/bin/nasm
 	@$(PREFIX)/bin/nasm --version
