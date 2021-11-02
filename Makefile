@@ -81,7 +81,7 @@ $(BUILD_DIR)/$(XORRISO_DIR_NAME): $(BUILD_DIR) $(SRC_DIR)/$(XORRISO_DIR_NAME)
 $(BUILD_DIR)/$(GRUB_DIR_NAME): $(BUILD_DIR) $(SRC_SIR)/$(GRUB_DIR_NAME)
 	@mkdir -p $@
 	@cd $@ && \
-	  $(SRC_DIR)/$(GRUB_DIR_NAME)/configure --prefix="$(PREFIX)" --target=$(TARGET) TARGET_CC=$(PREFIX)/bin/$(TARGET)-gcc TARGET_OBJCOPY=$(PREFIX)/bin/$(TARGET)-objcopy TARGET_STRIP=$(PREFIX)/bin/$(TARGET)-strip TARGET_NM=$(PREFIX)/bin/$(TARGET)-nm TARGET_RANLIB=$(PREFIX)/bin/$(TARGET)-ranlib
+	  $(SRC_DIR)/$(GRUB_DIR_NAME)/configure --disable-werror --prefix="$(PREFIX)" --target=$(TARGET) TARGET_CC=$(PREFIX)/bin/$(TARGET)-gcc TARGET_OBJCOPY=$(PREFIX)/bin/$(TARGET)-objcopy TARGET_STRIP=$(PREFIX)/bin/$(TARGET)-strip TARGET_NM=$(PREFIX)/bin/$(TARGET)-nm TARGET_RANLIB=$(PREFIX)/bin/$(TARGET)-ranlib
 
 $(SRC_DIR)/$(NASM_DIR_NAME): $(SRC_DIR)
 	@curl -s $(NASM_SRC_URL) | tar xJ -C $(SRC_DIR)
