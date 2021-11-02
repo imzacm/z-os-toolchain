@@ -1,12 +1,27 @@
 include ./config.mk
 include ./sources.mk
 
-.PHONY: all clean nasm binutils gcc xorriso grub
+.PHONY: all clean nasm clean-nasm binutils clean-binutils gcc clean-gcc xorriso clean-xorriso grub clean-grub
 
 all: nasm binutils gcc xorriso grub
 
 clean:
 	@rm -rf $(SRC_DIR) $(BUILD_DIR)
+
+clean-nasm:
+	@rm -rf $(SRC_DIR)/$(NASM_DIR_NAME) $(BUILD_DIR)/$(NASM_DIR_NAME)
+
+clean-binutils:
+	@rm -rf $(SRC_DIR)/$(BINUTILS_DIR_NAME) $(BUILD_DIR)/$(BINUTILS_DIR_NAME)
+
+clean-gcc:
+	@rm -rf $(SRC_DIR)/$(GCC_DIR_NAME) $(BUILD_DIR)/$(GCC_DIR_NAME)
+
+clean-xorriso:
+	@rm -rf $(SRC_DIR)/$(XORRISO_DIR_NAME) $(BUILD_DIR)/$(XORRISO_DIR_NAME)
+
+clean-grub:
+	@rm -rf $(SRC_DIR)/$(GRUB_DIR_NAME) $(BUILD_DIR)/$(GRUB_DIR_NAME)
 
 nasm: $(PREFIX)/bin/nasm
 	@$(PREFIX)/bin/nasm --version
@@ -66,7 +81,7 @@ $(BUILD_DIR)/$(XORRISO_DIR_NAME): $(BUILD_DIR) $(SRC_DIR)/$(XORRISO_DIR_NAME)
 $(BUILD_DIR)/$(GRUB_DIR_NAME): $(BUILD_DIR) $(SRC_SIR)/$(GRUB_DIR_NAME)
 	@mkdir -p $@
 	@cd $@ && \
-	  $(SRC_DIR)/$(GRUB_DIR_NAME)/configure --prefix="$(PREFIX)" TARGET_CC=$TARGET-gcc TARGET_OBJCOPY=$TARGET-objcopy TARGET_STRIP=$TARGET-strip TARGET_NM=$TARGET-nm TARGET_RANLIB=$TARGET-ranlib --target=$TARGET
+	  $(SRC_DIR)/$(GRUB_DIR_NAME)/configure --prefix="$(PREFIX)" --target=$(TARGET) TARGET_CC=$(PREFIX)/bin/$(TARGET)-gcc TARGET_OBJCOPY=$(PREFIX)/bin/$(TARGET)-objcopy TARGET_STRIP=$(PREFIX)/bin/$(TARGET)-strip TARGET_NM=$(PREFIX)/bin/$(TARGET)-nm TARGET_RANLIB=$(PREFIX)/bin/$(TARGET)-ranlib
 
 $(SRC_DIR)/$(NASM_DIR_NAME): $(SRC_DIR)
 	@curl -s $(NASM_SRC_URL) | tar xJ -C $(SRC_DIR)
